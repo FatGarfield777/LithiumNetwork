@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>app List</title>
+    <style>
+      body {
+        background-color: #0F0F0F;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+      }
+
+      .dropdown button {
+        background-color: #80ff44;
+        color: #000;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #333;
+        min-width: 160px;
+        z-index: 1;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .dropdown-content a {
+        color: #fff;
+        padding: 10px 0;
+        display: block;
+        text-decoration: none;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #80ff44;
+        color: #fff;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content.hide {
+        display: none;
+      }
+
+      .search-bar {
+        margin-bottom: 20px;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .search-bar input[type="text"] {
+        padding: 10px;
+        width: calc(50% - 50px);
+        border-radius: 5px;
+        border: none;
+        background-color: #333;
+        color: #fff;
+      }
+
+      .select-proxy-btn {
+        position: absolute;
+        top: 0;
+        right: 20px;
+      }
+
+      .apps-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .app {
+        text-decoration: none;
+        color: #fff;
+        text-align: center;
+        width: 150px;
+        display: block;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .app:hover {
+        transform: translateY(-5px);
+      }
+
+      .app img {
+        width: 100%;
+        height: auto;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+
+      .app-info {
+        padding: 10px;
+      }
+
+      .app-title {
+        margin: 0;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .app-author {
+        margin: 0;
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #333;
+        padding: 20px;
+        border-radius: 10px;
+        display: none;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        width: 80%;
+        height: 80%;
+      }
+
+      .popup.fullscreen {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: none;
+        border-radius: 0;
+      }
+
+      .close {
+        color: white;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+
+      .fullscreen-btn {
+        color: white;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+      }
+
+      .fullscreen-btn img {
+        width: 100%;
+        height: auto;
+      }
+
+      .placeholder-img {
+        width: 100%;
+        height: calc(100% - 60px);
+        /* Adjust height to account for close button and fullscreen button */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .placeholder-img img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      iframe {
+        width: 100%;
+        height: calc(100% - 60px);
+        /* Adjust height to account for close button and fullscreen button */
+        border: none;
+      }
+
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="dropdown" id="dropdown">
+        <button id="dropdown-btn" onclick="toggleDropdown()">Select Proxy Server</button>
+        <div class="dropdown-content" id="dropdown-content">
+          <a href="#" onclick="setBaseUrl('https://ultraviolet-lithiumnetwork-83742776.koyeb.app/uv/service', 'Server 1')">Server 1</a>
+          <a href="#" onclick="setBaseUrl('https://neb.tesla-b tc.eu.org/go', 'Server 2')">Server 2</a>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="search" onkeyup="filterapps()" placeholder="Search...">
+      </div>
+
+      <div class="apps-container" id="apps-container">
+        <!-- app cards will be dynamically generated here -->
+      </div>
+
+      <div class="popup" id="popup">
+        <span class="close" onclick="closePopup()">X</span>
+        <div class="placeholder-img" id="placeholder-img">
+          <img src="https://res.cloudinary.com/dguh1n4hz/image/upload/v1720795508/selectproxy.png" alt="Select Proxy Server">
+        </div>
+        <iframe id="app-iframe" style="display:none;"></iframe>
+        <div class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()">
+          <img id="fullscreen-icon" src="https://res.cloudinary.com/dguh1n4hz/image/upload/v1720878585/fullscren.gif" alt="Fullscreen">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var baseUrl = ''; // Default base URL is empty until a server is selected
+      var isFullscreen = false; // Track fullscreen state
+
+      function setBaseUrl(url, serverName) {
+        baseUrl = url;
+        updateDropdownText(serverName);
+        filterapps(); // Update displayed apps when base URL changes
+        hideDropdown();
+      }
+
+      function toggleDropdown() {
+        var dropdownContent = document.getElementById('dropdown-content');
+        dropdownContent.classList.toggle('hide');
+      }
+
+      function hideDropdown() {
+        var dropdownContent = document.getElementById('dropdown-content');
+        dropdownContent.classList.add('hide');
+      }
+
+      function updateDropdownText(serverName) {
+        var dropdownBtn = document.getElementById('dropdown-btn');
+        dropdownBtn.textContent = serverName || 'Select Proxy Server';
+      }
+
+      // Sample app data
+      var apps = [{name: "Discord", author: "Discord Inc.", link: "/hvtrs8%2F-dksaopd%2Ccmm-"},
+{name: "Facebook", author: "Meta Platforms, Inc", link: "/hvtrs8%2F-wuw%2Cfccgbmoi.aoo%2F"},
+{name: "Instagram", author: "Instagram", link: "/hvtrs8%2F-wuw%2Cilsvaercm%2Ccmm-"},
+{name: "Pinterest ", author: "Pinterest ", link: "/hvtrs8%2F-wuw%2Cpknvepeqt%2Ccmm-"},
+{name: "Quora", author: "Quora Inc", link: "/hvtrs8%2F-wuw%2Cqwopa%2Ccmm-"},
+{name: "Reddit", author: "Reddit Inc.", link: "/hvtrs8%2F-wuw%2Crgdfiv.aoo%2F%3Drft%3F401%3B6"},
+{name: "Snapchat", author: "Snap Inc", link: "/hvtrs8%2F-wuw%2Cslarcjav.aoo%2F"},
+{name: "TikTok", author: "Tiktok Pte. Ltd.", link: "/hvtrs8%2F-wuw%2Ctkkvoi.aoo%2Fgxrlmrg"},
+{name: "Twitch", author: "Twitch Interactive Inc.", link: "/hvtrs8%2F-wuw%2Ctuivcj.vv-"},
+{name: "Twitter", author: "X Corp.", link: "/hvtrs8%2F-x%2Ccmm-"},
+{name: "Youtube", author: "Google LLC", link: "/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-"},
+{name: "Spotify", author: "Spotify AB", link: "/hvtrs8%2F-orel.qpmtkf%7B.aoo%2F"},
+{name: "now.gg", author: "BlueStacks Inc.", link: "/hvtrs8%2F-nmw%2Cge%2F"},,
+      ];
+
+      // Function to generate image URL
+      function generateImageUrl(appName) {
+        return `https://res.cloudinary.com/dguh1n4hz/image/upload/v1720775948/${appName.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-')}`;
+      }
+
+      // Function to generate app cards
+      function generateappCards() {
+        var appsContainer = document.getElementById('apps-container');
+        appsContainer.innerHTML = '';
+        apps.forEach(function(app) {
+          var appCard = document.createElement('a');
+          appCard.className = 'app';
+          appCard.href = '#';
+          appCard.onclick = function() {
+            openPopup(app.link);
+          };
+
+          var appImage = document.createElement('img');
+          appImage.src = generateImageUrl(app.name);
+          appCard.appendChild(appImage);
+
+          var appInfo = document.createElement('div');
+          appInfo.className = 'app-info';
+
+          var appTitle = document.createElement('h3');
+          appTitle.className = 'app-title';
+          appTitle.textContent = app.name;
+          appInfo.appendChild(appTitle);
+
+          var appAuthor = document.createElement('p');
+          appAuthor.className = 'app-author';
+          appAuthor.textContent = app.author;
+          appInfo.appendChild(appAuthor);
+
+          appCard.appendChild(appInfo);
+          appsContainer.appendChild(appCard);
+        });
+      }
+
+      // Function to filter apps
+      function filterapps() {
+        var searchInput = document.getElementById('search').value.toUpperCase();
+        var apps = document.getElementById('apps-container').getElementsByClassName('app');
+
+        for (var i = 0; i < apps.length; i++) {
+          var appName = apps[i].getElementsByClassName('app-title')[0].textContent.toUpperCase();
+          if (appName.indexOf(searchInput) > -1) {
+            apps[i].style.display = '';
+          } else {
+            apps[i].style.display = 'none';
+          }
+        }
+      }
+
+      // Function to open popup with app
+      function openPopup(appLink) {
+        var popup = document.getElementById('popup');
+        var iframe = document.getElementById('app-iframe');
+        var placeholderImg = document.getElementById('placeholder-img');
+
+        if (baseUrl) {
+          iframe.src = baseUrl + '/' + appLink;
+          iframe.style.display = 'block';
+          placeholderImg.style.display = 'none';
+        } else {
+          iframe.style.display = 'none';
+          placeholderImg.style.display = 'flex';
+        }
+
+        popup.style.display = 'block';
+      }
+
+      // Function to close popup
+      function closePopup() {
+        var popup = document.getElementById('popup');
+        var iframe = document.getElementById('app-iframe');
+        iframe.src = '';
+        popup.style.display = 'none';
+      }
+
+      // Function to toggle fullscreen
+      function toggleFullscreen() {
+        var popup = document.getElementById('popup');
+        var fullscreenIcon = document.getElementById('fullscreen-icon');
+
+        if (!isFullscreen) {
+          popup.requestFullscreen().catch(err => {
+            alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+          });
+          fullscreenIcon.src = 'https://res.cloudinary.com/dguh1n4hz/image/upload/v1720878585/fullscreeno';
+        } else {
+          document.exitFullscreen();
+          fullscreenIcon.src = 'https://res.cloudinary.com/dguh1n4hz/image/upload/v1720878585/fullscreen';
+        }
+
+        isFullscreen = !isFullscreen;
+      }
+
+      // Initialize app cards
+      generateappCards();
+
+    </script>
+
+  </body>
+
+</html>
