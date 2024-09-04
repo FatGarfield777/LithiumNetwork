@@ -1,0 +1,3 @@
+If you haven't: install the cli with npm install -g @neutralinojs/neu
+
+To build: run neu build --release
