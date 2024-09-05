@@ -1,0 +1,12 @@
+1. Install rust
+2. Install Build Tools for Visual Studio and Windows 10 SDK
+3. Install WebView2
+
+BEFORE ANYTHING:
+    run npm i
+
+To build: 
+    npm run build
+
+To test:
+    npm run dev

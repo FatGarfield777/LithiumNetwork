@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Internet</title>
+    <style>
+    
+        p {
+          font-size: large;
+          font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+          align-items: center;
+          margin: auto;
+          width: 100%;
+          text-align: center;
+        }
+
+        button {
+            font-size: medium;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            text-align: center;
+            align-items: center;
+            margin: auto;
+            width: 50%;
+            left: 25%;
+            position: absolute;
+        }
+      
+      </style>
+</head>
+<body id="body">
+      <p>You've lost all internet lmao</p><br>
+      <button onclick="errm()">Fix it</button>
+      <script>
+        const body = document.getElementById("body")
+        function errm() {
+            let p = document.createElement("p")
+            p.innerHTML = "Error: No Internet"
+            body.appendChild(p)
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unblocked Games">
+    <title>Games</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="dropdown" id="dropdown">
+        <button id="dropdown-btn" onclick="toggleDropdown()">Select Proxy Server</button>
+        <div class="dropdown-content" id="dropdown-content">
+          <a href="#" onclick="setBaseUrl('https://infrared.koyeb.app/uv/service')">Server 1</a>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" id="search" onkeyup="filterGames()" placeholder="Search...">
+      </div>
+
+      <div class="games-container" id="games-container">
+      </div>
+
+      <div class="popup" id="popup">
+        <span class="close" onclick="closePopup()">X</span>
+        <div class="placeholder-img" id="placeholder-img">
+          <img src="images/selectproxy.png" alt="Select Proxy Server">
+        </div>
+        <iframe id="game-iframe" style="display:none;"></iframe>
+        <div class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()">
+          <img id="fullscreen-icon" src="images/fullscreen.png" alt="Fullscreen">
+        </div>
+        <div class="open-new-btn" id="open-new-btn" onclick="openInNewTab()">
+          <img id="open-new-icon" src="images/open-new.png" alt="Open in New Tab">
+        </div>
+      </div>
+
+      <div class="footer">
+        The games menu is still in beta. <br> Submit issues at <a href="https://lnlinks.zapier.app/submit-issue" target="_blank">this link</a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="js/neutralino.js"></script>
+    <script src="js/neutralino.d.ts"></script>
+
+  </body>
+
+</html>
