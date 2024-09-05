@@ -1,3 +1,12 @@
-If you haven't: install the cli with npm install -g @neutralinojs/neu
+1. Install rust
+2. Install Build Tools for Visual Studio and Windows 10 SDK
+3. Install WebView2
 
-To build: run neu build --release
+BEFORE ANYTHING:
+    run npm i
+
+To build: 
+    npm run build
+
+To test:
+    npm run dev

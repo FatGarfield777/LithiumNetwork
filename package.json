@@ -1,0 +1,16 @@
+{
+  "name": "lithiumnetwork",
+  "version": "2.0.0",
+  "description": "Unblocked Games",
+  "main": ".",
+  "author": "fatgarfield777",
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@tauri-apps/cli": "^1.6.1"
+  }
+}
