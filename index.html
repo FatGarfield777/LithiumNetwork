@@ -272,7 +272,7 @@
       <div class="dropdown" id="dropdown">
         <button id="dropdown-btn" onclick="toggleDropdown()">Select Proxy Server</button>
         <div class="dropdown-content" id="dropdown-content">
-          <a href="#" onclick="setBaseUrl('https://infrared.koyeb.app/uv/service')">Server 1</a>
+          <a href="#" onclick="setBaseUrl('https://infrared.koyeb.app/uv/service', 'Server 1')">Server 1</a>
         </div>
       </div>
 
@@ -298,12 +298,12 @@
       </div>
 
       <div class="footer">
-        The games menu is still in beta. <br> Submit issues at <a href="https://lnlinks.zapier.app/submit-issue" target="_blank">this link</a>
+        The games/apps menu is still in beta. <br> Submit issues at <a href="https://lnlinks.zapier.app/submit-issue" target="_blank">this link.</a>
       </div>
     </div>
 
     <script>
-      var baseUrl = '';
+      var baseUrl = 'https://infrared.koyeb.app/uv/service';
       var isFullscreen = false;
 
       function setBaseUrl(url, serverName) {
@@ -327,25 +327,32 @@
         var dropdownBtn = document.getElementById('dropdown-btn');
         dropdownBtn.textContent = serverName || 'Select Proxy Server';
       }
-
+// GAMES SECTION START
       var games = [{name: "Baseball League", author: "9VR", link: "/hvtrs8%2F-ioaeeq-mpgnqoaicl%2Cgmoelguqepcmnvelt%2Ccmm-gcdeevs-idr%3Dupl%3Fhvtrs8%2F-s1.cmczmncwq.aoo%2Frrmdwcvimn%2Faqsgtqbwciev-%3Alhv%7Br3xazob-1ge00423-41%60c%2F4gc%3A-c8gc%2F5g819a2g6gda%250F%60aqe%60anl%5Dlgaeug.zmn%26aoltcilep%3Dkg"},
 {name: "Basketball Stars", author: "MadPuffers", link: "/hvtrs8%2F-wctahfoauoeltcrkeq.aoo%2Fup%2Fcmnvelt-urlmafs-gcmgs-bcsievbcln-qtcrq%2F"},
 {name: "Cookie Clicker", author: "DashNet", link: "/hvtrs8%2F-wctahfoauoeltcrkeq.aoo%2Fup%2Fcmnvelt-urlmafs-gcmgs-cmoiig-alkciep%2F"},
 {name: "Cool Math Games", author: "Coolmath LLC", link: "/hvtrs8%2F-wuw%2Ccmonmctjgcmgs%2Ccmm-"},
 {name: "Crossy Road", author: "Hipster Whale", link: "/hvtrs8%2F-wctahfoauoeltcrkeq.aoo%2Fup%2Fcmnvelt-urlmafs-gcmgs-cpoqs%7B-pocd-"},
+{name: "Discord", author: "Discord Inc.", link: "/hvtrs8%2F-dksaopd%2Ccmm-"},
 {name: "Doge Miner", author: "rkn", link: "/hvtrs8%2F-dmggmkngr%2Csg%2F"},
 {name: "Doge Miner 2", author: "rkn", link: "/hvtrs8%2F-dmggmkngr0.aoo%2F"},
 {name: "Doodle Jump", author: "Lima Sky", link: "/hvtrs8%2F-cfn%2Cwcnvef5eaoeq.aoo%2Feaoeq%2Ffomdne%2Fjwmr-leu-gn%2Fs%2Fiea%2Fcnowd-ildgx%2Chvmn%3Fru%60%3D751"},
+{name: "Facebook", author: "Meta Platforms, Inc", link: "/hvtrs8%2F-wuw%2Cfccgbmoi.aoo%2F"},
 {name: "Flappy Bird", author: "Dong Nguyen", link: "/hvtrs8%2F-fnarp%7B-%60ipd%2Ccm%2Feaoe-fnarp%7B-%60ipd-"},
 {name: "Four Colors", author: "CodeThisLab", link: "/hvtrs8%2F-wuw%2Ccclaunavops%2Copg-gcmgs-ulo-gcmg.rhr"},
 {name: "Garfield 2048", author: "FatGarfield777", link: "/hvtrs8%2F-fcteapfkend575.eivhwb%2Cim%2Frlcy-Gcrdiglf224%3A%2F"},
 {name: "GeForce Now", author: "Nvidia Corporation", link: "/hvtrs8%2F-wuw%2Cntific.aoo%2Fgn%2Fuq%2Feedopcg-lou%2F"},
 {name: "Geometry Dash", author: "RobTop Games", link: "/hvtrs8%2F-wctahfoauoeltcrkeq.aoo%2Fup%2Fcmnvelt-urlmafs-gcmgs-ggooevr%7B-faqh-"},
 {name: "Hextris", author: "Logan Engstrom", link: "/hvtrs8%2F-hgxvrks%2Cim%2F"},
+{name: "Instagram", author: "Instagram", link: "/hvtrs8%2F-wuw%2Cilsvaercm%2Ccmm-"},
 {name: "Little Alchemy", author: "Recloak", link: "/hvtrs8%2F-lktvlgancjeoy%2Ccmm-"},
 {name: "Little Alchemy 2", author: "Recloak", link: "/hvtrs8%2F-lktvlgancjeoy0.aoo%2F"},
 {name: "Minecraft", author: "Mojang", link: "/hvtrs8%2F-ecgnepcpadt%2Ccmm-ma%2F3.%3A.%3A%2F"},
+{name: "now.gg", author: "BlueStacks Inc.", link: "/hvtrs8%2F-nmw%2Cge%2F"},
 {name: "paper.io", author: "Voodoo", link: "/hvtrs8%2F-pcpgr%2Fim.aoo%2F"},
+{name: "Pinterest", author: "Pinterest", link: "/hvtrs8%2F-wuw%2Cpknvepeqt%2Ccmm-"},
+{name: "Quora", author: "Quora Inc", link: "/hvtrs8%2F-wuw%2Cqwopa%2Ccmm-"},
+{name: "Reddit", author: "Reddit Inc.", link: "/hvtrs8%2F-wuw%2Crgdfiv.aoo%2F%3Drft%3F401%3B6"},
 {name: "Retro Bowl", author: "New Star Games", link: "/hvtrs8%2F-gcmg33620%3B.iolgeaoeq.aoo%2Feaoex%2F2011-620%3B%2Fnite-ildgx%2Chvmn"},
 {name: "Scrap Metal 3 Infernal Trap", author: "Ciorbyn", link: "/hvtrs8%2F-affpeg3ih2.eivhwb%2Cim%2Frrmjgcvs-sarcpoevan%2Fknfez.jtol"},
 {name: "Scratch", author: "Scratch Foundation, Inc.", link: "/hvtrs8%2F-sarctah%2Cmkt%2Cefu-"},
@@ -353,24 +360,17 @@
 {name: "Slope", author: "Y8 Games", link: "/hvtrs8%2F-wctahfoauoeltcrkeq.aoo%2Fup%2Fcmnvelt-urlmafs-gcmgs-snore-"},
 {name: "Snake", author: "CMG", link: "/hvtrs8%2F-wuw%2Ccmonmctjgcmgs%2Ccmm-0%2Fslaie-pna%7B"},
 {name: "Snake 3D", author: "PlaysNicely", link: "/hvtrs8%2F-wuw%2Ccmonmctjgcmgs%2Ccmm-0%2Fslaie%2F3f%2Frlcy"},
+{name: "Snapchat", author: "Snap Inc", link: "/hvtrs8%2F-wuw%2Cslarcjav.aoo%2F"},
+{name: "Spotify", author: "Spotify AB", link: "/hvtrs8%2F-orel.qpmtkf%7B.aoo%2F"},
 {name: "Stack", author: "Ketchapp", link: "/hvtrs8%2F-affpeg3ih2.eivhwb%2Cim%2Frrmjgcvs-svaak-ildgx%2Chvmn"},
 {name: "Stickman Hook", author: "Madbox", link: "/hvtrs8%2F-bmxkne2%2Cgktju%60.ko-b-sviakoal-jomk-"},
 {name: "Subway Surfers", author: "SYBO & Kiloo", link: "/hvtrs8%2F-affpeg3ih2.eivhwb%2Cim%2Frrmjgcvs-swbua%7B-qupfgrq%2Fknfez.jtol"},
 {name: "The Impossible Quiz", author: "Splapp-me-do", link: "/hvtrs8%2F-i%2Fetafe%2Cgktju%60.ko-6z%2FVhgIopmsqi%60lgQwix%2F"},
-{name: "Discord", author: "Discord Inc.", link: "/hvtrs8%2F-dksaopd%2Ccmm-"},
-{name: "Facebook", author: "Meta Platforms, Inc", link: "/hvtrs8%2F-wuw%2Cfccgbmoi.aoo%2F"},
-{name: "Instagram", author: "Instagram", link: "/hvtrs8%2F-wuw%2Cilsvaercm%2Ccmm-"},
-{name: "Pinterest", author: "Pinterest", link: "/hvtrs8%2F-wuw%2Cpknvepeqt%2Ccmm-"},
-{name: "Quora", author: "Quora Inc", link: "/hvtrs8%2F-wuw%2Cqwopa%2Ccmm-"},
-{name: "Reddit", author: "Reddit Inc.", link: "/hvtrs8%2F-wuw%2Crgdfiv.aoo%2F%3Drft%3F401%3B6"},
-{name: "Snapchat", author: "Snap Inc", link: "/hvtrs8%2F-wuw%2Cslarcjav.aoo%2F"},
 {name: "TikTok", author: "Tiktok Pte. Ltd.", link: "/hvtrs8%2F-wuw%2Ctkkvoi.aoo%2Fgxrlmrg"},
 {name: "Twitch", author: "Twitch Interactive Inc.", link: "/hvtrs8%2F-wuw%2Ctuivcj.vv-"},
 {name: "Twitter", author: "X Corp.", link: "/hvtrs8%2F-x%2Ccmm-"},
-{name: "Youtube", author: "Google LLC", link: "/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-"},
-{name: "Spotify", author: "Spotify AB", link: "/hvtrs8%2F-orel.qpmtkf%7B.aoo%2F"},
-{name: "now.gg", author: "BlueStacks Inc.", link: "/hvtrs8%2F-nmw%2Cge%2F"},];
-
+{name: "Youtube", author: "Google LLC", link: "/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-"},];
+// GAMES SECTION END
       function generateImageUrl(gameName) {
         return `https://res.cloudinary.com/dguh1n4hz/image/upload/v1720775948/${gameName.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-')}`;
       }
