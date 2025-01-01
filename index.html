@@ -248,6 +248,7 @@
         position: fixed;
         bottom: 0;
         width: 100%;
+        right: 0;
         text-align: center;
         background-color: #333;
         color: #fff;
@@ -286,14 +287,14 @@
       <div class="popup" id="popup">
         <span class="close" onclick="closePopup()">X</span>
         <div class="placeholder-img" id="placeholder-img">
-          <img src="https://res.cloudinary.com/dguh1n4hz/image/upload/v1720795508/selectproxy.png" alt="Select Proxy Server">
+          <img src="https://res.cloudinary.com/lngames/image/upload/v1720795508/selectproxy.png" alt="Select Proxy Server">
         </div>
         <iframe id="game-iframe" style="display:none;"></iframe>
         <div class="fullscreen-btn" id="fullscreen-btn" onclick="toggleFullscreen()">
-          <img id="fullscreen-icon" src="https://res.cloudinary.com/dguh1n4hz/image/upload/v1720878585/fullscreen" alt="Fullscreen">
+          <img id="fullscreen-icon" src="https://res.cloudinary.com/lngames/image/upload/v1720878585/fullscreen" alt="Fullscreen">
         </div>
         <div class="open-new-btn" id="open-new-btn" onclick="openInNewTab()">
-          <img id="open-new-icon" src="https://res.cloudinary.com/dguh1n4hz/image/upload/v1722935268/open-new.png" alt="Open in New Tab">
+          <img id="open-new-icon" src="https://res.cloudinary.com/lngames/image/upload/v1722935268/open-new.png" alt="Open in New Tab">
         </div>
       </div>
 
@@ -372,7 +373,7 @@
 {name: "Youtube", author: "Google LLC", link: "/hvtrs8%2F-wuw%2Cymuvu%60e%2Ccmm-"},];
 // GAMES SECTION END
       function generateImageUrl(gameName) {
-        return `https://res.cloudinary.com/dguh1n4hz/image/upload/v1720775948/${gameName.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-')}`;
+        return `https://res.cloudinary.com/lngames/image/upload/v1720775948/${gameName.toLowerCase().replace(/\s+/g, '-').replace(/\./g, '-')}`;
       }
 
       function generateGameCards() {
@@ -454,10 +455,10 @@
           popup.requestFullscreen().catch(err => {
             alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
           });
-          fullscreenIcon.src = 'https://res.cloudinary.com/dguh1n4hz/image/upload/v1720878585/fullscreeno';
+          fullscreenIcon.src = 'https://res.cloudinary.com/lngames/image/upload/v1720878585/fullscreeno';
         } else {
           document.exitFullscreen();
-          fullscreenIcon.src = 'https://res.cloudinary.com/dguh1n4hz/image/upload/v1720878585/fullscreen';
+          fullscreenIcon.src = 'https://res.cloudinary.com/lngames/image/upload/v1720878585/fullscreen';
         }
 
         isFullscreen = !isFullscreen;
