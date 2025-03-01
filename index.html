@@ -273,8 +273,8 @@
       <div class="dropdown" id="dropdown">
         <button id="dropdown-btn" onclick="toggleDropdown()">Select Proxy Server</button>
         <div class="dropdown-content" id="dropdown-content">
-          <a href="#" onclick="setBaseUrl(window.location.href + 'active/go', 'Local Server')">Local Server</a>
-          <a href="#" onclick="setBaseUrl('https://infrared.koyeb.app/uv/service', 'Server 1')">Server 1</a>
+          <a href="" onclick="setBaseUrl(window.location.href + 'active/go', 'Local Server')">Local Server</a>
+          <a href="" onclick="setBaseUrl('https://infrared.koyeb.app/uv/service', 'Server 1')">Server 1</a>
         </div>
       </div>
 
@@ -384,7 +384,7 @@
         games.forEach(function(game) {
           var gameCard = document.createElement('a');
           gameCard.className = 'game';
-          gameCard.href = '#';
+          gameCard.href = '';
           gameCard.onclick = function() {
             openPopup(game.link);
           };
