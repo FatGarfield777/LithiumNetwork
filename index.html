@@ -273,6 +273,7 @@
       <div class="dropdown" id="dropdown">
         <button id="dropdown-btn" onclick="toggleDropdown()">Select Proxy Server</button>
         <div class="dropdown-content" id="dropdown-content">
+          <a href="#" onclick="setBaseUrl(window.location.href + '/active/go', 'Local Server')">Local Server</a>
           <a href="#" onclick="setBaseUrl('https://infrared.koyeb.app/uv/service', 'Server 1')">Server 1</a>
         </div>
       </div>
@@ -304,11 +305,12 @@
     </div>
 
     <script>
-      var baseUrl = 'https://infrared.koyeb.app/uv/service';
+      var baseUrl = localStorage.getItem('baseUrl') || window.location.href + '/active/go';
       var isFullscreen = false;
 
       function setBaseUrl(url, serverName) {
         baseUrl = url;
+        localStorage.setItem('baseUrl', url);
         updateDropdownText(serverName);
         filterGames();
         hideDropdown();
