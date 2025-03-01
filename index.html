@@ -475,6 +475,32 @@
         }
       }
 
+      function encode(str) {
+        if (!str) return str;
+        return encodeURIComponent(
+          str
+            .toString()
+            .split('')
+            .map((char, ind) =>
+              ind % 2 ? String.fromCharCode(char.charCodeAt() ^ 2) : char
+            )
+            .join('')
+        );
+      }
+
+      function convertUrls() {
+        var links = document.querySelectorAll('.dropdown-content a');
+        links.forEach(function(link) {
+          var href = link.getAttribute('href');
+          var match = href.match(/\?convert=(.*)/);
+          if (match) {
+            var convertedUrl = window.location.href + 'active/go/' + encode('https://' + match[1]);
+            link.setAttribute('href', convertedUrl);
+          }
+        });
+      }
+
+      convertUrls();
       generateGameCards();
 
     </script>
